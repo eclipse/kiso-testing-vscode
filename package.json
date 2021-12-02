@@ -1,0 +1,194 @@
+{
+  "name": "pykiso-runner",
+  "displayName": "pykiso-runner",
+  "description": "run pykiso yaml files",
+  "publisher": "automation-team",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.54.0"
+  },
+  "icon": "images/PyKisoLogoFull.png",
+  "repository": {
+    "type": "git",
+    "url": "https://dev-bosch.com/bitbucket/scm/pea/vsc-pykiso-runner.git"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "extensionDependencies": [
+    "ms-python.python"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "test": [
+        {
+          "id": "pykisoTests",
+          "name": "Pykiso Tests"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "pykisoTests.refreshEntry",
+        "title": "Refresh",
+        "icon": {
+          "light": "resources/light/refresh.svg",
+          "dark": "resources/dark/refresh.svg"
+        }
+      },
+      {
+        "command": "pykisoTests.play",
+        "title": "Play",
+        "icon": {
+          "light": "resources/light/play.svg",
+          "dark": "resources/dark/play.svg"
+        }
+      },
+      {
+        "command": "pykisoTests.debug",
+        "title": "Play",
+        "icon": {
+          "light": "resources/light/debug.svg",
+          "dark": "resources/dark/debug.svg"
+        }
+      },
+      {
+        "command": "pykisoTests.editEntry",
+        "title": "Edit",
+        "icon": {
+          "light": "resources/light/edit.svg",
+          "dark": "resources/dark/edit.svg"
+        }
+      },
+      {
+        "command": "pykiso-runner.fixIntellisense",
+        "title": "pykiso-runner: Intellisense for Auxiliaries",
+        "icon": {
+          "light": "./resources/light/intellisense.svg",
+          "dark": "./resources/dark/intellisense.svg"
+        }
+      },
+      {
+        "command": "pykiso-runner.run",
+        "title": "pykiso-runner: Run",
+        "icon": {
+          "light": "./resources/light/run.svg",
+          "dark": "./resources/dark/run.svg"
+        }
+      },
+      {
+        "command": "pykiso-runner.run_debug",
+        "title": "pykiso-runner: Run log-level Debug",
+        "icon": {
+          "light": "./resources/light/runDebug.svg",
+          "dark": "./resources/dark/runDebug.svg"
+        }
+      },
+      {
+        "command": "pykiso-runner.debug",
+        "title": "pykiso-runner: Start Debug",
+        "icon": {
+          "light": "./resources/light/debug.svg",
+          "dark": "./resources/dark/debug.svg"
+        }
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "pykisoTests.refreshEntry",
+          "when": "view == pykisoTests",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "pykisoTests.play",
+          "when": "view == pykisoTests && viewItem == dependency",
+          "group": "inline@0"
+        },
+        {
+          "command": "pykisoTests.debug",
+          "when": "view == pykisoTests && viewItem == dependency",
+          "group": "inline@1"
+        },
+        {
+          "command": "pykisoTests.editEntry",
+          "when": "view == pykisoTests && viewItem == dependency",
+          "group": "inline@2"
+        }
+      ],
+      "editor/title/run": [
+        {
+          "when": "resourceExtname == .yaml",
+          "command": "pykiso-runner.run",
+          "group": "navigation"
+        },
+        {
+          "when": "resourceExtname == .py",
+          "command": "pykiso-runner.fixIntellisense",
+          "group": "navigation"
+        },
+        {
+          "when": "resourceExtname == .yaml",
+          "command": "pykiso-runner.run_debug",
+          "group": "navigation"
+        },
+        {
+          "when": "resourceExtname == .yaml",
+          "command": "pykiso-runner.debug",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "when": "resourceExtname == .yaml",
+          "command": "pykiso-runner.run",
+          "group": "navigation@0"
+        },
+        {
+          "when": "resourceExtname == .yaml",
+          "command": "pykiso-runner.run_debug",
+          "group": "navigation@0"
+        },
+        {
+          "when": "resourceExtname == .yaml",
+          "command": "pykiso-runner.debug",
+          "group": "navigation@0"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.4",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.54.0",
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/parser": "^4.31.1",
+    "@vscode/test-electron": "^1.6.2",
+    "chai": "^4.3.4",
+    "eslint": "^7.32.0",
+    "glob": "^7.1.7",
+    "mocha": "^9.1.1",
+    "sinon": "^12.0.1",
+    "sinon-chai": "^3.7.0",
+    "ts-sinon": "^2.0.2"
+  },
+  "dependencies": {
+    "@types/js-yaml": "^4.0.4",
+    "js-yaml": "^4.1.0"
+  }
+}
