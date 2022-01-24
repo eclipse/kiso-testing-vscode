@@ -1,7 +1,8 @@
-# pykiso-runner README
+# pykiso-runner
 
 This plugin integrates pykiso into vscode by providing an play button and a context menu entry for yaml files.
 Just open a pykiso yaml file and the play button will appear.
+It is also able to fix autocompletion in vscode.
 
 ## Features
 
@@ -52,5 +53,5 @@ Open this project and press F5 to run the plugin.
 
 ```bash
 npm install -g vsce
-vsce package --baseContentUrl https://dev-bosch.com/bitbucket/scm/pea/vsc-pykiso-runner.git
+vsce package --baseContentUrl https://github.com/eclipse/kiso-testing-vscode.git
 ```
