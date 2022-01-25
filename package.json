@@ -2,7 +2,7 @@
   "name": "pykiso-runner",
   "displayName": "pykiso-runner",
   "description": "run pykiso yaml files",
-  "publisher": "automation-team",
+  "publisher": "eclipse-kiso-testing",
   "version": "0.1.0",
   "engines": {
     "vscode": "^1.54.0"
@@ -190,5 +190,7 @@
   "dependencies": {
     "@types/js-yaml": "^4.0.4",
     "js-yaml": "^4.1.0"
-  }
+  },
+  "author": "",
+  "license": "ISC"
 }
