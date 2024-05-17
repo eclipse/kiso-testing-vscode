@@ -3,7 +3,7 @@
   "displayName": "pykiso-runner",
   "description": "run pykiso yaml files",
   "publisher": "eclipse-kiso-testing",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "engines": {
     "vscode": "^1.54.0"
   },
