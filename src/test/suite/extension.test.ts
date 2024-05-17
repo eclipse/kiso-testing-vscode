@@ -37,7 +37,7 @@ suite("Extension Test Suite", () => {
 
     assert(stubUpdatePythonInterpreter.calledOnce);
     assert(stubCreateTerminal.calledOnce);
-    expect(stubCreateTerminal).to.be.called.calledWith("Pykiso #1 dummy.yaml");
+    expect(stubCreateTerminal).to.be.called.calledWith({ name: 'Pykiso #1 dummy.yaml', cwd: '' });
     expect(stubTerminal.sendText).to.be.called.calledWith(
       'C:/Python -m pykiso -c "/dummy.yaml"'
     );
@@ -66,8 +66,8 @@ suite("Extension Test Suite", () => {
     assert(stubUpdatePythonInterpreter.calledTwice);
     assert(stubCreateTerminal.calledTwice);
     expect(stubCreateTerminal)
-      .to.be.called.calledWith("Pykiso DEBUG #1 dummy.yaml")
-      .calledWith("Pykiso DEBUG #2 dummy.yaml");
+      .to.be.called.calledWith({ name: 'Pykiso DEBUG #1 dummy.yaml', cwd: '' })
+      .calledWith({ name: 'Pykiso DEBUG #2 dummy.yaml', cwd: '/somePath' });
 
     expect(stubTerminal.sendText).to.be.called.calledWith(
       'C:/Python -m pykiso -c "/dummy.yaml" --log-level DEBUG'

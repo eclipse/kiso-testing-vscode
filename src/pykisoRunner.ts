@@ -23,17 +23,25 @@ export class PykisoRunner {
     var activeFile = filePath!.split("\\").pop()!.split("/").pop();
     this.updatePythonInterpreter();
 
+    var filePathUri = vscode.Uri.parse(filePath);
+
     if (!debug) {
-      var terminal = vscode.window.createTerminal(
-        `Pykiso #${this.nextTermID++} ${activeFile}`
-      );
+      const terminalOptions = {
+        name: `Pykiso #${this.nextTermID++} ${activeFile}`,
+        cwd: filePathUri.path.substring(0, filePathUri.path.lastIndexOf('/')),
+      };
+
+      var terminal = vscode.window.createTerminal(terminalOptions);
       terminal.sendText(
         `${this.pythonInterpreterPath} -m pykiso -c \"${filePath}\"`
       );
     } else {
-      var terminal = vscode.window.createTerminal(
-        `Pykiso DEBUG #${this.nextTermID++} ${activeFile}`
-      );
+      const terminalOptions = {
+        name: `Pykiso DEBUG #${this.nextTermID++} ${activeFile}`,
+        cwd: filePathUri.path.substring(0, filePathUri.path.lastIndexOf('/')),
+      };
+
+      var terminal = vscode.window.createTerminal(terminalOptions);
       terminal.sendText(
         `${this.pythonInterpreterPath} -m pykiso -c \"${filePath}\" --log-level DEBUG`
       );

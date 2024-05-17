@@ -24,6 +24,8 @@ export function debugYaml(pykisoConfigPath: vscode.Uri) {
     module: "pykiso",
     justMyCode: false,
     args: ["-c", pykisoConfigPath.fsPath],
+    cwd: pykisoConfigPath.path.substring(0, pykisoConfigPath.path.lastIndexOf('/')),
+    purpose: ["debug-in-terminal"]
   };
 
   vscode.debug.startDebugging(workspaceFolder, pykisoDebugConfig);
