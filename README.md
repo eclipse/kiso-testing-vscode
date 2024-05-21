@@ -29,6 +29,10 @@ None
 
 ## Release Notes
 
+### 0.2.0
+
+Run test from yaml folder
+
 ### 0.1.0
 
 Add real debugging capabilities for ITF
